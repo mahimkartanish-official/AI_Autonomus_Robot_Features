@@ -1,0 +1,29 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Virtual environment
+venv/
+.env/
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# ROS build files
+build/
+install/
+log/
+
+# Large models / weights
+*.h5
+*.pt
+*.onnx
+*.pb
+
+# Dataset / face DB (optional)
+faces_db/
