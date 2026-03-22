@@ -3,7 +3,7 @@ import edge_tts
 import os
 
 class TTSNode:
-    def __init__(self,voice="en-IN-PrabhatNeutral"):
+    def __init__(self,voice="en-IN-PrabhatNeural"):
         self.voice = voice
 
     
@@ -16,3 +16,12 @@ class TTSNode:
     def speak(self,text):
         print("Speaking")
         asyncio.run(self.speak_async(text))
+
+
+
+ts = TTSNode()
+
+while True:
+    query = input("Enter your text: ")
+
+    ts.speak(query)
