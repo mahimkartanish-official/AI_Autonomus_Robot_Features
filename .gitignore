@@ -1,29 +1,23 @@
-# Python
+# Virtual environments
+envs/
+venv/
+
+# Python cache
 __pycache__/
 *.pyc
-*.pyo
-
-# Virtual environment
-venv/
-.env/
-
-# Logs
-*.log
 
 # OS files
 .DS_Store
 Thumbs.db
 
-# ROS build files
-build/
-install/
-log/
-
-# Large models / weights
-*.h5
-*.pt
+# Models (InsightFace auto downloads)
 *.onnx
-*.pb
 
-# Dataset / face DB (optional)
-faces_db/
+# Logs
+*.log
+
+# VS Code
+.vscode/
+
+# Large data
+src/vision/face_db/*

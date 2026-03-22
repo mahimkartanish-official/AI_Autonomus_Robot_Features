@@ -7,8 +7,8 @@ class FaceTracker:
 
     def track(self, face, frame_shape):
         h, w, _ = frame_shape
-        x, y, fw, fh = map(int, face[:4])
-
+        # x, y, fw, fh = map(int, face[:4])
+        x, y, fw, fh = face["bbox"]
         center_x, center_y = w // 2, h // 2
 
         cx = x + fw // 2
