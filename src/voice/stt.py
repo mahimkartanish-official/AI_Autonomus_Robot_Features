@@ -120,64 +120,48 @@
 
 
 
+# import whisper
+# import sounddevice as sd
+# import numpy as np
+# import scipy.io.wavfile as wav
+# import re
+# import playsound
+
+
+# class STTNode:
+#     def __init__(self):
+#         self.model = whisper.load_model("base")
+    
+#     def record(self, duration=4,fs=16000) -> str:
+#         print("Listening........")
+#         audio = sd.rec(int(duration*fs),samplerate=fs,channels=1,dtype="float32")
+#         sd.wait()
+#         wav.write("input.wav",fs,audio)
+#         return "input.wav"
+    
+#     def transcribe(self,file):
+#         print("Transcribing.....")
+#         result = self.model.transcribe(file,language="en",fp16=False)
+#         return result["text"]
+    
 import whisper
 import sounddevice as sd
 import numpy as np
 import scipy.io.wavfile as wav
-import re
 
 class STTNode:
     def __init__(self):
         self.model = whisper.load_model("base")
-    
-    def record(self, duration=4,fs=16000) -> str:
-        print("Listening........")
-        audio = sd.rec(int(duration*fs),samplerate=fs,channels=1,dtype="float32")
+
+    def record(self, duration=4, fs=16000):
+        print("Listening...")
+        audio = sd.rec(int(duration * fs), samplerate=fs, channels=1, dtype="float32")
         sd.wait()
-        wav.write("input.wav",fs,audio)
+
+        wav.write("input.wav", fs, audio)
         return "input.wav"
-    
-    def transcribe(self,file):
-        print("Transcribing.....")
-        result = self.model.transcribe(file,language="en",fp16=False)
+
+    def transcribe(self, file):
+        print("Transcribing...")
+        result = self.model.transcribe(file, language="en", fp16=False)
         return result["text"]
-    
-    # def pasre_command(self):
-    #     text = re.sub(r'[^\w\s]', '', text.lower()).strip()
-
-    #     commands = {
-    #         "exit": ["exit", "quit", "stop"],
-    #     }
-    
-    #     for cmd, variants in commands.items():
-    #         if text in variants:
-    #             return cmd
-    
-    #     return None
-
-
-# # test = STTNode()
-
-# # res = test.record(duration=6)
-
-# # print(test.trasncribe(res))
-
-
-stt = STTNode()
-
-while True:
-    file = stt.record()
-    text = stt.transcribe(file)
-
-    
-    print("You said:", text)
-
-    clean_text = re.sub(r'[^\w\s]', '', text.lower()).strip()
-
-    if clean_text in ["exit", "quit", "stop"]:
-        print("exiting conversation")
-        break
-    # cmd = stt.parse_command(text)
-
-    # if cmd == "exit":
-    #     break
